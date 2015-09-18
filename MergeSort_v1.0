@@ -1,0 +1,48 @@
+/* Implementation of Mergesort using Java*/
+public class MergeSort {
+
+	public static void main(String[] args){
+		int a[] = {2, 4, 1, 6, 8, 5, 3, 7};
+		mergeSort(a);
+		for(int j: a)
+			System.out.print(+j + " ");
+	}
+	
+	static void mergeSort(int[] a){
+		int arrayLength = a.length;
+		if(arrayLength < 2)
+			return;
+		int mid = arrayLength/2;
+		int[] left = new int[mid];
+		int[] right = new int[arrayLength-mid];
+		for(int i=0; i<=mid-1; i++)
+			left[i]=a[i];
+		for(int i=mid; i<=arrayLength-1; i++)
+			right[i-mid]=a[i];
+		mergeSort(left);
+		mergeSort(right);
+		merge(left,right,a);
+	}
+	
+	static void merge(int[] left, int[] right, int[] a){
+		int i=0,j=0,k =0;
+		while(i<left.length && j< right.length){
+			if(left[i] <= right[j]){
+				a[k]=left[i];
+				i++;
+			}else{
+				a[k]=right[j];
+				j++;
+			}
+			k++;
+		}
+		while(i<left.length){
+			a[k]=left[i];
+			i++;k++;
+		}
+		while(j<right.length){
+			a[k]=right[j];
+			j++;k++;
+		}
+	}
+}
