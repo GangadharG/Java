@@ -1,0 +1,28 @@
+/* A java program to demonstarte Binary Search*/
+public class BinarySearch {
+
+	public static void main(String[] args){
+		
+		// binary search assumes input array is sorted
+		int a[] = {2, 6, 13, 21, 36, 47, 63, 81, 97};
+		int position = binarySearch(a, 40);
+		if(position>0)
+			System.out.print("Position of required element "+position);
+		else
+			System.out.println("element not found");
+	}
+	
+	static int binarySearch(int[] a, int x){
+		int start = 0, end = a.length-1;
+		while(start<=end){
+			int mid = (start+end)/2;
+			if(a[mid] == x)
+				return mid;
+			else if(x < a[mid])
+				end = mid-1;
+			else
+				start = mid+1;
+		}
+		return -1;
+	}
+}
