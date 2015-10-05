@@ -1,0 +1,27 @@
+/* Binary Search implementation  using Recursion technique */
+public class BinarySearch {
+	public static void main(String[] args) {
+
+		// binary search assumes input array is sorted
+		int a[] = { 2, 6, 13, 21, 36, 47, 63, 81, 97 };
+		int position = binarySearch(a, 0, a.length - 1, 13); // find the element 13
+		if (position > 0)
+			System.out.print("Position of required element " + position);
+		else
+			System.out.println("element not found");
+	}
+
+	// Recursive method
+	static int binarySearch(int[] a, int low, int high, int x) {
+
+		if(low>high)	// Base condition 1
+			return -1;
+		int mid = low + (high - low) / 2;
+		if (x == a[mid])	// Base condition 2
+			return mid;
+		else if (x < a[mid])
+			return binarySearch(a, low, mid - 1, x);
+		else
+			return binarySearch(a, mid + 1, high, x);
+	}
+}
