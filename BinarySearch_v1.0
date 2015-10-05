@@ -5,7 +5,7 @@ public class BinarySearch {
 		
 		// binary search assumes input array is sorted
 		int a[] = {2, 6, 13, 21, 36, 47, 63, 81, 97};
-		int position = binarySearch(a, 40);
+		int position = binarySearch(a, 81);	// find element 81
 		if(position>0)
 			System.out.print("Position of required element "+position);
 		else
