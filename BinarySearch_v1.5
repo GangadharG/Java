@@ -1,0 +1,38 @@
+/* Java program to search an element in circular Sorted array*/
+public class BinarySearch6 {
+
+	public static void main(String[] args){
+		
+		// Circular sorted array with no duplicates
+		int a[] = {12, 14, 18, 21, 3, 6, 8, 9};
+		int x = 18; // find the element x
+		int result = searchCircularSortedArray(a, x);
+		if(result == -1)
+			System.out.println("Element not found");
+		else
+			System.out.println("The given element found at array index "+result);
+	}
+	
+	static int searchCircularSortedArray(int[] a, int x){
+		
+		int arrayLen = a.length;
+		int start = 0, end = arrayLen-1;
+		while(start <= end){
+			int mid = (start+end)/2;
+			if(x == a[mid]) // if not circular sorted array and the element as at mid position
+				return mid;
+			if(a[mid] <= a[end]){
+				if(x > a[mid] && x <= a[end]) // => search in right sorted half
+					start = mid+1;
+				else
+					end = mid-1; // if not circular sorted array and element is left of mid
+			}else{
+				if(a[start] <= x && x < a[mid]) // =>search in left sorted half
+					end = mid-1;
+				else
+					start = mid+1; // if not circular sorted array and element is right of mid
+			}			
+		}
+		return -1;
+	}
+}
